@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="util.css" />
+    <link rel="stylesheet" type="text/css" href="login.css" />
+  </head>
+  <body>
+    <div class="limiter">
+      <div class="container-login100">
+        <div class="wrap-login100">
+          <form class="login100-form validate-form">
+            <span class="login100-form-title p-b-26"> Welcome </span>
+            <span class="login100-form-title p-b-48">
+              <i class="zmdi zmdi-font"></i>
+            </span>
+
+            <div
+              class="wrap-input100 validate-input"
+              data-validate="Valid email is: a@b.c"
+            >
+              <input class="input100" type="text" name="email" />
+              <span class="focus-input100" data-placeholder="Email"></span>
+            </div>
+
+            <div
+              class="wrap-input100 validate-input"
+              data-validate="Enter password"
+            >
+              <span class="btn-show-pass">
+                <i class="zmdi zmdi-eye"></i>
+              </span>
+              <input class="input100" type="password" name="pass" />
+              <span class="focus-input100" data-placeholder="Password"></span>
+            </div>
+
+            <div class="container-login100-form-btn">
+              <div class="wrap-login100-form-btn">
+                <div class="login100-form-bgbtn"></div>
+                <button class="login100-form-btn">
+                  <a href="http://127.0.0.1:5500/index.html">Login</a>
+                </button>
+              </div>
+            </div>
+            <div class="text-center p-t-44">
+              <div class="txt1" style="margin-bottom: 12px; font-size: medium">
+                Sign in with google
+              </div>
+
+              <div
+                class="google"
+                style="
+                  background-color: red;
+                  color: white;
+                  padding: 5px 12px;
+                  width: 130px;
+                  margin-left: 25%;
+                  cursor: pointer;
+                  font-size: large;
+                  border-radius: 8px;
+                  text-decoration: none;
+                "
+              >
+                Google
+              </div>
+            </div>
+            <!-- <div class="google">google</div> -->
+            <div class="text-center p-t-44">
+              <span class="txt1"> Don't have an account? </span>
+
+              <a class="txt2" href="register.html"> Sign Up </a>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <script type="module">
+      // Import the functions you need from the SDKs you need
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+      import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-analytics.js";
+      import {
+        getAuth,
+        signInWithPopup,
+        GoogleAuthProvider,
+        // signInWithRedirect,
+        // getRedirectResult,
+      } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
+
+      // TODO: Add SDKs for Firebase products that you want to use
+      // https://firebase.google.com/docs/web/setup#available-libraries
+
+      // Your web app's Firebase configuration
+      // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+      const firebaseConfig = {
+        apiKey: "AIzaSyAtmM2B-FwX-Mtxqc7bL6Rh-w7vX97i9LY",
+        authDomain: "medimarket-c32fb.firebaseapp.com",
+        projectId: "medimarket-c32fb",
+        storageBucket: "medimarket-c32fb.appspot.com",
+        messagingSenderId: "687695942055",
+        appId: "1:687695942055:web:ec6e86064c46fb81f8e682",
+        measurementId: "G-E2WJTPDB2H",
+      };
+
+      // Initialize Firebase
+      const app = initializeApp(firebaseConfig);
+      const provider = new GoogleAuthProvider(app);
+      const analytics = getAnalytics(app);
+      const auth = getAuth();
+      const googleBtn = document.querySelector(".google");
+
+      googleBtn.addEventListener("click", () => {
+        console.log("clicked");
+        signInWithPopup(auth, provider)
+          .then((result) => {
+            // This gives you a Google Access Token. You can use it to access the Google API.
+            const credential = GoogleAuthProvider.credentialFromResult(result);
+            const token = credential.accessToken;
+            // The signed-in user info.
+            const user = result.user;
+            // IdP data available using getAdditionalUserInfo(result)
+			window.location.replace("http://127.0.0.1:5500/");           // ...
+          })
+          .catch((error) => {
+            // Handle Errors here.
+            const errorCode = error.code;
+            const errorMessage = error.message;
+            // The email of the user's account used.
+            const email = error.customData.email;
+            // The AuthCredential type that was used.
+            const credential = GoogleAuthProvider.credentialFromError(error);
+            // ...
+          });
+      });
+    </script>
+  </body>
+</html>

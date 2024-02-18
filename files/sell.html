@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="sell.css" />
+  </head>
+  <body>
+    <header class="header1">
+      <div class="logo">
+        <img src="img/image 7.svg" alt="" class="logoimg" />
+        <div class="search">
+          <img src="img/search.svg" alt="" />
+          <input type="text" placeholder="Search" />
+        </div>
+      </div>
+      <div class="nav">
+        <ul>
+          <li class="ho">
+            <a href="http://127.0.0.1:5500/index.html">Home</a>
+          </li>
+          <li class="ho">
+            <a href="http://127.0.0.1:5500/files/abtus.html">About</a>
+          </li>
+          <li class="ho">
+            <a href="http://127.0.0.1:5500/index.html#content">Services</a>
+          </li>
+          <li class="ho"><a href="">Contact</a></li>
+        </ul>
+      </div>
+    </header>
+    <main>
+      <div class="content">
+        <div class="box">
+          <h1>SELL</h1>
+          <h2>Details</h2>
+          <div class="details">
+            <div class="detail">
+              <h3>Name</h3>
+              <input type="text" />
+            </div>
+            <div class="detail">
+              <h3>Quantity</h3>
+              <input type="text" />
+            </div>
+            <div class="detail">
+              <h3>MFD</h3>
+              <input type="text" />
+            </div>
+            <div class="detail">
+              <h3>Expiry Date</h3>
+              <input type="text" />
+            </div>
+          </div>
+        </div>
+        <script
+          class="jsbin"
+          src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"
+        ></script>
+        <div class="file-upload">
+          <button
+            class="file-upload-btn"
+            type="button"
+            onclick="$('.file-upload-input').trigger( 'click' )"
+          >
+            Add Image
+          </button>
+
+          <div class="image-upload-wrap">
+            <input
+              class="file-upload-input"
+              type="file"
+              onchange="readURL(this);"
+              accept="image/*"
+            />
+            <div class="drag-text">
+              <h3>Drag and drop a file or select add Image</h3>
+            </div>
+          </div>
+          <div class="file-upload-content">
+            <img class="file-upload-image" src="#" alt="your image" />
+            <div class="image-title-wrap">
+              <button
+                type="button"
+                onclick="removeUpload()"
+                class="remove-image"
+              >
+                Remove <span class="image-title">Uploaded Image</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <button class="calprice">Calculate Price</button>
+    </main>
+    <script src="sell.js"></script>
+  </body>
+</html>

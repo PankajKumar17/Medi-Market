@@ -75,7 +75,7 @@
   main{
     display: flex;
     flex-direction: column;
-    margin-top:10vh;
+    margin-top:15vh;
     align-items: center;
   }
   .content{

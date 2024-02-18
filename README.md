@@ -1,2 +1,7 @@
 # Medi-Market
-enliven
+
+link:https://pankajkumar17.github.io/Medi-Market/
+
+or
+
+RUN index.html
